@@ -13,12 +13,12 @@ env_setting:
 
 # Datapath Configuratoin
 data_cfg:
-  train_clean_json: mamba_owndataset_alltypes/data/train_clean.json
-  train_noisy_json: mamba_owndataset_alltypes/data/train_noisy.json
-  valid_clean_json: mamba_owndataset_alltypes/data/valid_clean.json
-  valid_noisy_json: mamba_owndataset_alltypes/data/valid_noisy.json
-  test_clean_json: mamba_owndataset_alltypes/data/test_clean.json
-  test_noisy_json: mamba_owndataset_alltypes/data/test_noisy.json
+  train_clean_json: MambAttention/data/train_clean.json
+  train_noisy_json: MambAttention/data/train_noisy.json
+  valid_clean_json: MambAttention/data/valid_clean.json
+  valid_noisy_json: MambAttention/data/valid_noisy.json
+  test_clean_json: MambAttention/data/test_clean.json
+  test_noisy_json: MambAttention/data/test_noisy.json
 
 # Training Configuration
 # This section details parameters that directly influence the training process,
