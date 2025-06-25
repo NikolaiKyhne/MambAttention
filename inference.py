@@ -62,10 +62,10 @@ def inference(args, device):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--input_folder', default='VB-DemandEx/test_noisy')
+    parser.add_argument('--input_folder', default='VB-DemandEx/noisy_test')
     parser.add_argument('--output_folder', default='results')
-    parser.add_argument('--config', default='results')
-    parser.add_argument('--checkpoint_file', required=True)
+    parser.add_argument('--config', default='MambAttention/checkpoints/MambAttention_seed3441_VB-DemandEx.yaml')
+    parser.add_argument('--checkpoint_file', default='MambAttention/checkpoints/seed3441.yaml', required=True)
     args = parser.parse_args()
 
     global device
