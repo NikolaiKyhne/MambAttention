@@ -68,7 +68,7 @@ NCCL_P2P_DISABLE=1 torchrun --nnodes=1 --nproc-per-node=4 MambAttention/train.py
 Modify the `--input_folder` and `--output_folder` parameters to point to your desired input and output directories. Then, run the script.
 
 ```bash
-NCCL_P2P_DISABLE=1 python xLSTM-SENet/inference.py --input_folder=datasets/vctkalltypes/noisy_test --output_folder=output --checkpoint_file=results/seed3441/g_00xxxxxx.pth --config=MambAttention/checkpoints/MambAttention_seed3441_VB-DemandEx.yaml
+NCCL_P2P_DISABLE=1 python MambAttention/inference.py --input_folder=VB-DemandEx/noisy_test --output_folder=output --checkpoint_file=results/seed3441/g_00xxxxxx.pth --config=MambAttention/checkpoints/MambAttention_seed3441_VB-DemandEx.yaml
 ```
 
 Model weights and training recipe can be found in: [MambAttention Checkpoint](checkpoints/MambAttention_seed3441_VB-DemandEx.pth) and [MambAttention Recipe](checkpoints/MambAttention_seed3441_VB-DemandEx.yaml) is now available.
