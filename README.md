@@ -9,7 +9,6 @@ This is the official implementation of the [MambAttention: Mamba with Multi-Head
     * Python >= 3.9
     * CUDA >= 12.0
     * PyTorch == 2.2.2
-(We have had succes with running our code on newer versions of PyTorch)
 
 ## Model
 
@@ -17,8 +16,10 @@ This is the official implementation of the [MambAttention: Mamba with Multi-Head
 
 ## Speech Enhancement Results
 ### Speech enhancement generalization performance:
-![VCTKDEMAND_Results](imgs/table_1.jpg)
+![VBDEMANDEx_Results](imgs/table_1.jpg)
 
+## Audio Examples
+A selection of audio samples on the out-of-domain datasets can be found [here](https://github.com/NikolaiKyhne/MambAttention/tree/main/audio_examples).
 
 ## Installation
 
@@ -47,23 +48,19 @@ Note: Installing from source (provided `mamba_install`) can help prevent package
 
 ## Training the Model
 
-### Step 0: Downsample VoiceBank+Demand Dataset
-Using the provided script for [downsampling](https://github.com/NikolaiKyhne/xLSTM-SENet/blob/main/downsampling.py) to downsample the VoiceBank+Demand dataset from 48kHz to 16kHz.
+### Step 1: Download VBDemandEx Dataset (update)
+Download the VB-DemandEx dataset from Hugging Face [here](https://github.com/NikolaiKyhne/xLSTM-SENet/blob/main/downsampling.py).
 
-You may need to update the data paths in `downsampling.py`
+### Step 2: Prepare Dataset JSON
 
-### Step 1: Prepare Dataset JSON
+Create the dataset JSON file using the script `data/make_dataset_json.py`. You may need to modify the data paths in `data/make_dataset_json.py` to match the dataset folder location.
 
-Create the dataset JSON file using the script `data/make_dataset_json.py`. You may need to modify the data paths in `data/make_dataset_json.py` to match the downsampled dataset. 
-
-Alternatively, you can directly modify the data paths in `data/train_clean.json`, `data/train_noisy.json`, etc.
-
-### Step 2: Run the following command to train the model.
+### Step 3: Run the following command to train the model.
 
 Modify the `--exp_name`, `--exp_folder`, and `--config` parameters in the command to match your folder structure.
 
 ```bash
-NCCL_P2P_DISABLE=1 torchrun --nnodes=1 --nproc-per-node=4 xLSTM-SENet/train.py --exp_name=seed1234 --exp_folder=results/ --config=xLSTM-SENet/recipes/xLSTM-SENet/xLSTM-SENet_4N.yaml
+NCCL_P2P_DISABLE=1 torchrun --nnodes=1 --nproc-per-node=4 MambAttention/train.py --exp_name=seed3441 --exp_folder=results/ --config=MambAttention/checkpoints/MambAttention_seed3441_VB-DemandEx.yaml
 ```
 
 ## Running Inference
@@ -71,7 +68,7 @@ NCCL_P2P_DISABLE=1 torchrun --nnodes=1 --nproc-per-node=4 xLSTM-SENet/train.py -
 Modify the `--input_folder` and `--output_folder` parameters to point to your desired input and output directories. Then, run the script.
 
 ```bash
-NCCL_P2P_DISABLE=1 python xLSTM-SENet/inference.py --input_folder=vctk16/noisy_testset_wav_16k --output_folder=output --checkpoint_file=results/seed1234/g_00xxxxxx.pth --config=xLSTM-SENet/recipes/xLSTM-SENet/xLSTM-SENet_4N.yaml
+NCCL_P2P_DISABLE=1 python xLSTM-SENet/inference.py --input_folder=datasets/vctkalltypes/noisy_test --output_folder=output --checkpoint_file=results/seed3441/g_00xxxxxx.pth --config=MambAttention/checkpoints/MambAttention_seed3441_VB-DemandEx.yaml
 ```
 
 Model weights and training recipe can be found in: [MambAttention Checkpoint](checkpoints/MambAttention_seed3441_VB-DemandEx.pth) and [MambAttention Recipe](checkpoints/MambAttention_seed3441_VB-DemandEx.yaml) is now available.
