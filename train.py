@@ -325,7 +325,7 @@ def main():
     parser = argparse.ArgumentParser()
     parser.add_argument('--exp_folder', default='results')
     parser.add_argument('--exp_name', default='MambAttention')
-    parser.add_argument('--config', default='MambAttention/recipes/MambAttention_seed3441_VB-DemandEx.yaml')
+    parser.add_argument('--config', default='MambAttention/checkpoints/MambAttention_seed3441_VB-DemandEx.yaml')
     args = parser.parse_args()
 
     cfg = load_config(args.config)
