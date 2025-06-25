@@ -25,26 +25,25 @@ def make_json(directory_path, output_file):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--prefix_path', default='own_dataset')
+    parser.add_argument('--prefix_path', default='datasets/vctkalltypes/')
 
     args = parser.parse_args()
 
-    prefix = args.prefix_path if (args.prefix_path is not None) else "/vctk16/"
+    prefix = args.prefix_path if (args.prefix_path is not None) else "datasets/vctkalltypes/"
 
-    a = os.path.join(prefix, 'clean_trainset_28spk_wav_16k/')
-    print(a)
+
     ## You can manualy modify the clean and noisy path
     # ----------------------------------------------------------#
     ## train_clean
     make_json(
-        os.path.join('datasets/vctkalltypes/', 'clean_train'),
-        'mamba_owndataset_alltypes/data/train_clean.json'
+        os.path.join(prefix, 'clean_train'),
+        'MambAttention/data/train_clean.json'
     )
 
     ## train_noisy
     make_json(
-        os.path.join('datasets/vctkalltypes/', 'noisy_train'),
-        'mamba_owndataset_alltypes/data/train_noisy.json'
+        os.path.join(prefix, 'noisy_train'),
+        'MambAttention/data/train_noisy.json'
     )
     # ----------------------------------------------------------#
 
@@ -52,14 +51,14 @@ def main():
     # create valid set json
     ## valid_clean
     make_json(
-         os.path.join('datasets/vctkalltypes/', 'clean_valid/'),
-        'mamba_owndataset_alltypes/data/valid_clean.json'
+         os.path.join(prefix, 'clean_valid/'),
+        'MambAttention/data/valid_clean.json'
     )
 
     ## valid_noisy
     make_json(
-        os.path.join('datasets/vctkalltypes/', 'noisy_valid/'),
-        'mamba_owndataset_alltypes/data/valid_noisy.json'
+        os.path.join(prefix, 'noisy_valid/'),
+        'MambAttention/data/valid_noisy.json'
     )
     # ----------------------------------------------------------#
 
@@ -67,14 +66,14 @@ def main():
     # create testing set json
     ## test_clean
     make_json(
-       os.path.join('datasets/vctkalltypes/', 'clean_test/'),
-        'mamba_owndataset_alltypes/data/test_clean.json'
+       os.path.join(prefix, 'clean_test/'),
+        'MambAttention/data/test_clean.json'
     )
 
     ## test_noisy
     make_json(
-       os.path.join('datasets/vctkalltypes', 'noisy_test/'),
-        'mamba_owndataset_alltypes/data/test_noisy.json'
+       os.path.join(prefix, 'noisy_test/'),
+        'MambAttention/data/test_noisy.json'
     )
     # ----------------------------------------------------------#
 
