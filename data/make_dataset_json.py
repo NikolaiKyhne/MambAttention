@@ -25,11 +25,11 @@ def make_json(directory_path, output_file):
 
 def main():
     parser = argparse.ArgumentParser()
-    parser.add_argument('--prefix_path', default='datasets/vctkalltypes/')
+    parser.add_argument('--prefix_path', default='VB-DemandEx')
 
     args = parser.parse_args()
 
-    prefix = args.prefix_path if (args.prefix_path is not None) else "datasets/vctkalltypes/"
+    prefix = args.prefix_path if (args.prefix_path is not None) else "VB-DemandEx"
 
 
     ## You can manualy modify the clean and noisy path
