@@ -14,7 +14,7 @@ import torch.multiprocessing as mp
 from torch.nn.parallel import DistributedDataParallel
 import torch.distributed as dist
 
-from dataloaders.dataloader_vctk import VCTKDemandDataset
+from dataloaders.dataloader import Dataset
 from models.stfts import mag_phase_stft, mag_phase_istft
 from models.generator import SEMamba
 from models.loss import pesq_score, phase_losses
@@ -53,9 +53,8 @@ def create_dataset(cfg, train=True, split=True, device='cuda:0'):
     clean_json = cfg['data_cfg']['train_clean_json'] if train else cfg['data_cfg']['valid_clean_json']
     noisy_json = cfg['data_cfg']['train_noisy_json'] if train else cfg['data_cfg']['valid_noisy_json']
     shuffle = (cfg['env_setting']['num_gpus'] <= 1) if train else False
-    pcs = cfg['training_cfg']['use_PCS400'] if train else False
 
-    return VCTKDemandDataset(
+    return Dataset(
         clean_json=clean_json,
         noisy_json=noisy_json,
         sampling_rate=cfg['stft_cfg']['sampling_rate'],
@@ -68,7 +67,6 @@ def create_dataset(cfg, train=True, split=True, device='cuda:0'):
         n_cache_reuse=0,
         shuffle=shuffle,
         device=device,
-        pcs=pcs
     )
 
 def create_dataloader(dataset, cfg, train=True):
