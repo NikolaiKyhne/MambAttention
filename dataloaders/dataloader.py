@@ -5,7 +5,6 @@ import torch
 import torch.utils.data
 import librosa
 from models.stfts import mag_phase_stft, mag_phase_istft
-from models.pcs400 import cal_pcs
 
 def list_files_in_directory(directory_path):
     files = []
@@ -27,7 +26,7 @@ def get_clean_path_for_noisy(noisy_file_path, clean_path_dict):
     identifier = extract_identifier(noisy_file_path)
     return clean_path_dict.get(identifier, None)
 
-class VCTKDemandDataset(torch.utils.data.Dataset):
+class Dataset(torch.utils.data.Dataset):
     """
     Dataset for loading clean and noisy audio files.
 
@@ -60,7 +59,6 @@ class VCTKDemandDataset(torch.utils.data.Dataset):
         n_cache_reuse=1, 
         shuffle=True, 
         device=None, 
-        pcs=False
     ):
 
         self.clean_wavs_path = load_json_file( clean_json )
@@ -84,7 +82,6 @@ class VCTKDemandDataset(torch.utils.data.Dataset):
         self.cached_noisy_wav = None
         self._cache_ref_count = 0
         self.device = device
-        self.pcs = pcs
 
     def __getitem__(self, index):
         """
@@ -101,8 +98,7 @@ class VCTKDemandDataset(torch.utils.data.Dataset):
             clean_path = get_clean_path_for_noisy(noisy_path, self.clean_path_dict)
             noisy_audio, _ = librosa.load( noisy_path, sr=self.sampling_rate)
             clean_audio, _ = librosa.load( clean_path, sr=self.sampling_rate)
-            if self.pcs == True:
-                clean_audio = cal_pcs(clean_audio)
+
             self.cached_noisy_wav = noisy_audio
             self.cached_clean_wav = clean_audio
             self._cache_ref_count = self.n_cache_reuse
