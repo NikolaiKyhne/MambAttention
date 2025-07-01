@@ -56,7 +56,7 @@ class MambAttention(nn.Module):
         x = self.dense_encoder(x)
 
         # Apply Mamba blocks
-        for block in self.TFMambAttentoin:
+        for block in self.TFMambAttention:
             x = block(x)
 
         # Decode magnitude and phase
