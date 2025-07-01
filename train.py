@@ -16,7 +16,7 @@ import torch.distributed as dist
 
 from dataloaders.dataloader import Dataset
 from models.stfts import mag_phase_stft, mag_phase_istft
-from models.generator import SEMamba
+from models.generator import MambAttention
 from models.loss import pesq_score, phase_losses
 from models.discriminator import MetricDiscriminator, batch_pesq
 from utils.util import (
@@ -102,7 +102,7 @@ def train(rank, args, cfg):
     dist.init_process_group(backend='nccl', init_method='env://')
     device = torch.device(f'cuda:{rank}')
 
-    generator = SEMamba(cfg).to(device)
+    generator = MambAttention(cfg).to(device)
     discriminator = MetricDiscriminator().to(device)
 
     if rank == 0:
