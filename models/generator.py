@@ -1,14 +1,14 @@
 import torch
 import torch.nn as nn
 from einops import rearrange
-from .mamba_block import TFMambaBlock
+from .mambattention_block import MambAttention
 from .codec_module import DenseEncoder, MagDecoder, PhaseDecoder
 
-class SEMamba(nn.Module):
+class MambAttention(nn.Module):
     """
-    SEMamba model for speech enhancement using Mamba blocks.
+    MambAttention model for speech enhancement using Mamba and shared multi-head attention blocks.
     
-    This model uses a dense encoder, multiple Mamba blocks, and separate magnitude
+    This model uses a dense encoder, multiple Mamba and multi-head attention blocks, and separate magnitude
     and phase decoders to process noisy magnitude and phase inputs.
     """
     def __init__(self, cfg):
@@ -18,7 +18,7 @@ class SEMamba(nn.Module):
         Args:
         - cfg: Configuration object containing model parameters.
         """
-        super(SEMamba, self).__init__()
+        super(MambAttention, self).__init__()
         self.cfg = cfg
         self.num_tscblocks = cfg['model_cfg']['num_tfmamba'] if cfg['model_cfg']['num_tfmamba'] is not None else 4  # default tfmamba: 4
 
@@ -26,7 +26,7 @@ class SEMamba(nn.Module):
         self.dense_encoder = DenseEncoder(cfg)
 
         # Initialize Mamba blocks
-        self.TSMamba = nn.ModuleList([TFMambaBlock(cfg) for _ in range(self.num_tscblocks)])
+        self.TFMambAttention = nn.ModuleList([MambAttention(cfg) for _ in range(self.num_tscblocks)])
 
         # Initialize decoders
         self.mask_decoder = MagDecoder(cfg)
@@ -56,7 +56,7 @@ class SEMamba(nn.Module):
         x = self.dense_encoder(x)
 
         # Apply Mamba blocks
-        for block in self.TSMamba:
+        for block in self.TFMambAttentoin:
             x = block(x)
 
         # Decode magnitude and phase
