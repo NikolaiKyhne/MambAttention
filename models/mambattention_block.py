@@ -80,7 +80,7 @@ class AttentionModule(nn.Module):
 
 class MambAttentionBlock(nn.Module):
     """
-    Temporal-Frequency Mamba block for sequence modeling.
+    Temporal-Frequency Mamba and Multi-Head Attentoin block for sequence modeling.
     
     Attributes:
     cfg (Config): Configuration for the block.
@@ -92,7 +92,7 @@ class MambAttentionBlock(nn.Module):
     flinear (ConvTranspose1d): ConvTranspose1d layer for frequency dimension.
     """
     def __init__(self, cfg):
-        super(TFMambaBlock, self).__init__()
+        super(MambAttentionBlock, self).__init__()
         self.cfg = cfg
         self.hid_feature = cfg['model_cfg']['hid_feature']
         
