@@ -1,7 +1,7 @@
 import torch
 import torch.nn as nn
 from einops import rearrange
-from .mambattention_block import MambAttention
+from .mambattention_block import MambAttentionBlock
 from .codec_module import DenseEncoder, MagDecoder, PhaseDecoder
 
 class MambAttention(nn.Module):
