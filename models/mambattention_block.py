@@ -78,7 +78,7 @@ class AttentionModule(nn.Module):
                          key_padding_mask=key_padding_mask)
         return x
 
-class TFMambaBlock(nn.Module):
+class MambAttentionBlock(nn.Module):
     """
     Temporal-Frequency Mamba block for sequence modeling.
     
@@ -86,6 +86,8 @@ class TFMambaBlock(nn.Module):
     cfg (Config): Configuration for the block.
     time_mamba (MambaBlock): Mamba block for temporal dimension.
     freq_mamba (MambaBlock): Mamba block for frequency dimension.
+    attention (AttentionModule): Shared Multi-Head Attention block temporal and frequency dimension.
+
     tlinear (ConvTranspose1d): ConvTranspose1d layer for temporal dimension.
     flinear (ConvTranspose1d): ConvTranspose1d layer for frequency dimension.
     """
