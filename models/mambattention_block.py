@@ -80,7 +80,7 @@ class AttentionModule(nn.Module):
 
 class MambAttentionBlock(nn.Module):
     """
-    Temporal-Frequency Mamba and Multi-Head Attentoin block for sequence modeling.
+    Temporal-Frequency Mamba and Multi-Head Attention block for sequence modeling.
     
     Attributes:
     cfg (Config): Configuration for the block.
