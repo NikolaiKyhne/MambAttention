@@ -5,7 +5,7 @@ import json
 import torch
 import librosa
 from models.stfts import mag_phase_stft, mag_phase_istft
-from models.generator import SEMamba
+from models.generator import MambAttention
 import soundfile as sf
 import time
 
@@ -24,7 +24,7 @@ def inference(args, device):
     compress_factor = cfg['model_cfg']['compress_factor']
     sampling_rate = cfg['stft_cfg']['sampling_rate']
 
-    model = SEMamba(cfg).to(device)
+    model = MambAttention(cfg).to(device)
     state_dict = torch.load(args.checkpoint_file, map_location=device)
     model.load_state_dict(state_dict['generator'])
 
