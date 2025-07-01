@@ -48,8 +48,10 @@ Note: Installing from source (provided `mamba_install`) can help prevent package
 
 ## Training the Model
 
-### Step 1: Download VBDemandEx Dataset (update)
-Download the VB-DemandEx dataset from Hugging Face [here](https://github.com/NikolaiKyhne/xLSTM-SENet/blob/main/downsampling.py).
+### Step 1: Download VBDemandEx Dataset (and possibly OOD datasets)
+Download the VB-DemandEx dataset from Hugging Face using the code provided [here](https://github.com/NikolaiKyhne/MambAttention/blob/main/download_dataset.py).
+
+We refer to the official repositories for the [DNS 2020](https://github.com/microsoft/DNS-Challenge/tree/interspeech2020/master) and [Expressive Anechoic Recordings of Speech (EARS)](https://github.com/facebookresearch/ears_dataset) & [Generation scripts for EARS-WHAM and EARS-Reverb](https://github.com/sp-uhh/ears_benchmark).
 
 ### Step 2: Prepare Dataset JSON
 
@@ -78,7 +80,7 @@ Model weights and training recipe can be found in: [MambAttention Checkpoint](ch
 The evaluation metrics is calculated via: [CMGAN](https://github.com/ruizhecao96/CMGAN/blob/main/src/tools/compute_metrics.py)  
 
 
-## Citation:
+## Citation (not updated yet):
 If you find the paper useful in your research, please cite:  
 ```
 @article{kuehne2025xlstmsenet
