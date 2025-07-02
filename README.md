@@ -1,6 +1,6 @@
 # MambAttention: Mamba with Multi-Head Attention for Generalizable Single-Channel Speech Enhancement
 
-This is the official implementation of the [MambAttention: Mamba with Multi-Head Attention for Generalizable Single-Channel Speech Enhancement](https://arxiv.org/abs/2501.06146) paper.
+This is the official implementation of the [MambAttention: Mamba with Multi-Head Attention for Generalizable Single-Channel Speech Enhancement](https://arxiv.org/abs/2507.00966v1) paper.
 
 ---
 
@@ -73,20 +73,20 @@ Modify the `--input_folder` and `--output_folder` parameters to point to your de
 NCCL_P2P_DISABLE=1 python MambAttention/inference.py --input_folder=VB-DemandEx/noisy_test --output_folder=output --checkpoint_file=results/seed3441/g_00xxxxxx.pth --config=MambAttention/checkpoints/MambAttention_seed3441_VB-DemandEx.yaml
 ```
 
-Model weights and training recipe can be found in: [MambAttention Checkpoint](checkpoints/MambAttention_seed3441_VB-DemandEx.pth) and [MambAttention Recipe](checkpoints/MambAttention_seed3441_VB-DemandEx.yaml) is now available.
+Model weights and training recipe can be found in: (WILL BE ADDED SOON!) and [MambAttention Recipe](checkpoints/MambAttention_seed3441_VB-DemandEx.yaml) is now available.
 
 
 ## Evaluation
 The evaluation metrics is calculated via: [CMGAN](https://github.com/ruizhecao96/CMGAN/blob/main/src/tools/compute_metrics.py)  
 
 
-## Citation (not updated yet):
+## Citation:
 If you find the paper useful in your research, please cite:  
 ```
-@article{kuehne2025xlstmsenet
-  title={xLSTM-SENet: xLSTM for Single-Channel Speech Enhancement},
+@article{kuehne2025mambattention
+  title={MambAttention: Mamba with Multi-Head Attention for Generalizable Single-Channel Speech Enhancement},
   author={Nikolai Lund Kühne and Jan Østergaard and Jesper Jensen and Zheng-Hua Tan},
-  journal={arXiv preprint arXiv:2501.06146},
+  journal={arXiv preprint arXiv:2507.00966},
   year={2025}
 }
 ```
