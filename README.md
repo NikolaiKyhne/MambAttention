@@ -1,6 +1,6 @@
 # MambAttention: Mamba with Multi-Head Attention for Generalizable Single-Channel Speech Enhancement
 
-This is the official implementation of the [MambAttention: Mamba with Multi-Head Attention for Generalizable Single-Channel Speech Enhancement](https://arxiv.org/abs/2507.00966v1) paper.
+This is the official implementation of the [MambAttention: Mamba with Multi-Head Attention for Generalizable Single-Channel Speech Enhancement](https://arxiv.org/abs/2507.00966v1) paper. Our proposed VB-DemandEx dataset can be found [here](https://huggingface.co/datasets/NikolaiKyhne/VB-DemandEx). Code to download and extract the dataset is available [here](https://github.com/NikolaiKyhne/MambAttention/blob/main/download_dataset.py).
 
 ---
 
