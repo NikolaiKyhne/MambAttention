@@ -18,9 +18,10 @@ This is the official implementation of the [MambAttention: Mamba with Multi-Head
 ### Speech enhancement generalization performance:
 ![VBDEMANDEx_Results](https://github.com/NikolaiKyhne/MambAttention/blob/main/imgs/table_1.jpg)
 
-## Audio Examples (model weights will be released soon)
+## Audio Examples and Model Weights
 A selection of audio samples on the out-of-domain datasets can be found [here](https://github.com/NikolaiKyhne/MambAttention/tree/main/audio_examples).
 
+Pre-trained model weights for inference can be found [here](https://github.com/NikolaiKyhne/MambAttention/blob/main/checkpoints/).
 ## Installation
 
 ### Step 1 - Install PyTorch
