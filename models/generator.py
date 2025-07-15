@@ -26,7 +26,7 @@ class MambAttention(nn.Module):
         self.dense_encoder = DenseEncoder(cfg)
 
         # Initialize Mamba blocks
-        self.TFMambAttention = nn.ModuleList([MambAttention(cfg) for _ in range(self.num_tscblocks)])
+        self.TFMambAttention = nn.ModuleList([MambAttentionBlock(cfg) for _ in range(self.num_tscblocks)])
 
         # Initialize decoders
         self.mask_decoder = MagDecoder(cfg)
