@@ -86,7 +86,7 @@ If you find the paper useful in your research, please cite:
 ```
 @article{kuehne2025mambattention
   title={MambAttention: Mamba with Multi-Head Attention for Generalizable Single-Channel Speech Enhancement},
-  author={Nikolai Lund Kühne and Jesper Jensen and Jan Østergaard and Zheng-Hua Tan},
+  author={Nikolai Lund K{\"u}hne and Jesper Jensen and Jan Østergaard and Zheng-Hua Tan},
   journal={arXiv preprint arXiv:2507.00966},
   year={2025}
 }
