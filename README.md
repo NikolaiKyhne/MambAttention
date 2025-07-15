@@ -16,7 +16,7 @@ This is the official implementation of the [MambAttention: Mamba with Multi-Head
 
 ## Speech Enhancement Results
 ### Speech enhancement generalization performance:
-![VBDEMANDEx_Results](imgs/table_1.jpg)
+![VBDEMANDEx_Results](https://github.com/NikolaiKyhne/MambAttention/blob/main/imgs/table_1.jpg)
 
 ## Audio Examples (model weights will be released soon)
 A selection of audio samples on the out-of-domain datasets can be found [here](https://github.com/NikolaiKyhne/MambAttention/tree/main/audio_examples).
